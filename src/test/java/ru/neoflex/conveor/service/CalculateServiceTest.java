@@ -18,7 +18,8 @@ public class CalculateServiceTest {
     private final static BigDecimal RATE_IS_INSURANCE_NOT_SALARY_CLIENT = new BigDecimal("10.00");
     private final static BigDecimal RATE_NOT_INSURANCE_IS_SALARY_CLIENT = new BigDecimal("11.00");
     private final static BigDecimal RATE_NOT_INSURANCE_NOT_SALARY_CLIENT = new BigDecimal("13.00");
-
+    private final static Integer TERM = 12;
+    private final static BigDecimal MONTHLY_PAYMENT = new BigDecimal("2609.48");
 
     @Test
     public void calculateTotalAmount() {
@@ -38,5 +39,11 @@ public class CalculateServiceTest {
                 .isEqualTo(RATE_NOT_INSURANCE_IS_SALARY_CLIENT);
         Assertions.assertThat(calculatorService.calculateRate(false, false))
                 .isEqualTo(RATE_NOT_INSURANCE_NOT_SALARY_CLIENT);
+    }
+
+    @Test
+    public void calculateMonthlyPayment() {
+        Assertions.assertThat(calculatorService.calculateMonthlyPayment(TOTAL_AMOUNT_IS_INSURANCE, TERM, RATE_IS_INSURANCE_IS_SALARY_CLIENT))
+                .isEqualTo(MONTHLY_PAYMENT);
     }
 }
