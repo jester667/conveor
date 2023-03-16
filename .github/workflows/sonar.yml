@@ -20,6 +20,10 @@ jobs:
         with:
           java-version: 11
           distribution: 'zulu' # Alternative distribution options are available
+      - name: Setup gradle    
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: 7.5.1             
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
